@@ -37,8 +37,8 @@ import Layout from "@/layout";
 
 /**
  * constantRoutes
- * a base page that does not have permission requirements
- * all roles can be accessed
+ *没有权限要求的基页
+ *所有角色都可以访问
  */
 export const constantRoutes = [
   {
@@ -134,19 +134,19 @@ export const constantRoutes = [
 
 /**
  * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
+ * 需要根据用户角色动态加载的路由
  */
 export const asyncRoutes = [
   // {
   //   path: '/permission',
   //   component: Layout,
   //   redirect: '/permission/page',
-  //   alwaysShow: true, // will always show the root menu
+  //   alwaysShow: true, // 将始终显示根菜单
   //   name: 'Permission',
   //   meta: {
   //     title: 'Permission',
   //     icon: 'lock',
-  //     roles: ['admin', 'editor'] // you can set roles in root nav
+  //     roles: ['admin', 'editor'] // 您可以在根导航中设置角色
   //   },
   //   children: [
   //     {
@@ -155,7 +155,7 @@ export const asyncRoutes = [
   //       name: 'PagePermission',
   //       meta: {
   //         title: 'Page Permission',
-  //         roles: ['admin'] // or you can only set roles in sub nav
+  //         roles: ['admin'] // 或者只能在子导航中设置角色
   //       }
   //     },
   //     {
@@ -164,7 +164,7 @@ export const asyncRoutes = [
   //       name: 'DirectivePermission',
   //       meta: {
   //         title: 'Directive Permission'
-  //         // if do not set roles, means: this page does not require permission
+  //         // 如果不设置角色，则表示：此页面不需要权限
   //       }
   //     },
   //     {
@@ -192,7 +192,7 @@ export const asyncRoutes = [
   //   ]
   // },
 
-  // /** when your routing map is too long, you can split it into small modules **/
+  // /** 当路由图太长时，可以将其拆分为小模块 **/
   // // componentsRouter,
   // // chartsRouter,
   // // nestedRouter,
@@ -391,7 +391,7 @@ export const asyncRoutes = [
   //   ]
   // },
 
-  // 404 page must be placed at the end !!!
+  // 404页必须放在末尾!!!
   { path: "*", redirect: "/404", hidden: true },
 ];
 

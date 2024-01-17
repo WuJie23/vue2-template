@@ -29,7 +29,7 @@ const mutations = {
 };
 
 const actions = {
-  // user login
+  //用户登陆
   login({ commit }, userInfo) {
     const { username, password } = userInfo;
     return new Promise((resolve, reject) => {
@@ -77,6 +77,17 @@ const actions = {
     });
   },
 
+  /*
+  退出登录
+  清空本地的cookie存储的身份令牌token，
+  清空store里的token和roles用户角色
+  //再重置路由
+  export function resetRouter() {
+  const newRouter = createRouter(); //新建路由
+  router.matcher = newRouter.matcher; // 重置router 防止丢失login页面 和避免重置router时刷新页面
+}
+  */
+
   // 退出登录方法
   logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
@@ -88,7 +99,7 @@ const actions = {
           commit("SET_ROLES", []);
           removeToken();
           resetRouter();
-          // reset visited views and cached views
+          // 重置访问的视图和缓存的视图
           // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
           dispatch("tagsView/delAllViews", null, { root: true });
           resolve();

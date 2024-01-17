@@ -7,7 +7,7 @@ import { getToken } from "@/utils/auth"; // 从cookie获取令牌
 import getPageTitle from "@/utils/get-page-title";
 
 /*
-permission.js
+src/permission.js
 全局异步路由监听
 确定用户是否已登录/有无Token
 
@@ -33,8 +33,7 @@ router.beforeEach(async (to, from, next) => {
   //确定用户是否已登录
   const hasToken = getToken();
 
-  if (hasToken) {            router.addRoute(accessRoute);
-
+  if (hasToken) {
     if (to.path === "/login") {
       // 如果已登录，则重定向到主页
       next({ path: "/" });
@@ -58,6 +57,7 @@ router.beforeEach(async (to, from, next) => {
 
           // 动态添加可访问的路由
           for (const accessRoute of accessRoutes) {
+            router.addRoute(accessRoute);
           }
         
           // hack方法以确保addRoutes是完整的

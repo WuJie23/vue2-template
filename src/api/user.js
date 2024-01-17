@@ -1,5 +1,14 @@
 import request from "@/utils/request";
 
+/*
+src/api/user.js
+获取token
+用户登录之后在store储存用户名，用户密码
+并以此作为参数向后端发送请求，后端返回token
+
+然后根据token 向后端请求返回用户信息
+*/
+
 export function login(data) {
   // return request({
   //   url: '/vue-element-admin/user/login',

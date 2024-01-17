@@ -1,4 +1,9 @@
 <template>
+
+  <!--
+    layout布局两部分
+    侧边栏sidebar部分，右边appmian,appmian分为navbar和tags view和rote view，rote view用来展示不同路由页面内容
+  -->
   <div :class="classObj" class="app-wrapper">
     <!-- <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" /> -->
     <!-- sidebar侧边栏组件 -->
