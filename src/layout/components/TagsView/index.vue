@@ -1,4 +1,8 @@
 <template>
+  <!-- 
+    tagsview
+
+   -->
     <div id="tags-view-container" class="tags-view-container">
       <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
         <router-link
@@ -31,6 +35,17 @@
   <script>
   import ScrollPane from './ScrollPane'
   import path from 'path'
+
+  /*
+  tagview
+  监听路由变换，变换就调用addTags方法添加标签
+  addTags中调用vuex方法 去储存新的tags view，其中分为 visitedViews: [],//储存所有tagview(不重复，用some方法判断当前跳转路由路径与已储存路由路径是否重复)
+  cachedViews: []//储存appmain需要被缓存的组件（cachedViews通过路由原信息中定义的noCache字段来判断是否需要缓存）
+
+  动态设置tagsview 的class名 来实现路由变换时tagsview的高亮 通过比对当前路由路径与tagsview的路由路径 相同就高亮
+  同时tagsview选中时滚动条滚动到标签位置保证标签在可视范围内
+    
+  */
   
   export default {
     components: { ScrollPane },
@@ -116,9 +131,9 @@
         const tags = this.$refs.tag
         this.$nextTick(() => {
           for (const tag of tags) {
-            if (tag.to.path === this.$route.path) {
+            if (tag.to.path === this.$route.path) {//tagsview选中时滚动条滚动到标签位置保证标签在可视范围内
               this.$refs.scrollPane.moveToTarget(tag)
-              // when query is different then update
+              // 当查询不同时，更新
               if (tag.to.fullPath !== this.$route.fullPath) {
                 this.$store.dispatch('tagsView/updateVisitedView', this.$route)
               }
@@ -175,9 +190,9 @@
       },
       openMenu(tag, e) {
         const menuMinWidth = 105
-        const offsetLeft = this.$el.getBoundingClientRect().left // container margin left
-        const offsetWidth = this.$el.offsetWidth // container width
-        const maxLeft = offsetWidth - menuMinWidth // left boundary
+        const offsetLeft = this.$el.getBoundingClientRect().left // 左侧集装箱边距
+        const offsetWidth = this.$el.offsetWidth // 集装箱宽度
+        const maxLeft = offsetWidth - menuMinWidth // 左边界
         const left = e.clientX - offsetLeft + 15 // 15: margin right
   
         if (left > maxLeft) {

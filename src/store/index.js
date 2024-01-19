@@ -14,8 +14,8 @@ true 表示要递归地搜索子目录。
 这段代码的作用通常是在构建时动态导入符合条件的模块，常见于使用像Webpack这样的模块打包工具的项目中。*/
 const modulesFiles = require.context('./modules', true, /\.js$/)
 
-// you do not need `import app from './modules/app'`
-// it will auto require all vuex module from modules file
+// 您不需要“从中导入应用程序”/模块/应用程序'`
+// 它将自动要求模块文件中的所有vuex模块
 const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   // set './app.js' => 'app'
   const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')

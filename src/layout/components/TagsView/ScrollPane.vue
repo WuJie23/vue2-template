@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  const tagAndTagSpacing = 4 // tagAndTagSpacing
+  const tagAndTagSpacing = 4 // 标签和标签间距
   
   export default {
     name: 'ScrollPane',

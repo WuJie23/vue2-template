@@ -1,4 +1,7 @@
 <template>
+  <!-- 
+    侧边栏使用el-scrollbar设置侧边栏滚动条 包裹主要内容 导航菜单组件
+   -->
   <div :class="{ 'has-logo': showLogo }">
     <!-- <logo v-if="showLogo" :collapse="isCollapse" /> -->
     <el-scrollbar wrap-class="scrollbar-wrapper">

@@ -10,6 +10,13 @@ import zhLocale from './zh'
 import esLocale from './es'
 import jaLocale from './ja'
 
+/*
+国际化
+vue-i18n+element-ui
+首先下载并在main.js引入使用注册
+在注册Element时设置i18n的处理方法,可以实现当点击切换按钮后，elementUI可以自动调用.js语言文件实现多语言切换
+*/ 
+
 Vue.use(VueI18n)
 
 const messages = {

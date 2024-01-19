@@ -1,20 +1,20 @@
 const state = {
-    visitedViews: [],
+    visitedViews: [],//储存所有tagview(不重复)
     cachedViews: []//储存appmain需要被缓存的组件
   }
   
   const mutations = {
-    ADD_VISITED_VIEW: (state, view) => {
-      if (state.visitedViews.some(v => v.path === view.path)) return
+    ADD_VISITED_VIEW: (state, view) => {//添加visitedViews
+      if (state.visitedViews.some(v => v.path === view.path)) return//visitedViews在satae有了就return
       state.visitedViews.push(
         Object.assign({}, view, {
           title: view.meta.title || 'no-name'
         })
       )
     },
-    ADD_CACHED_VIEW: (state, view) => {
+    ADD_CACHED_VIEW: (state, view) => {//添加cachedViews
       if (state.cachedViews.includes(view.name)) return
-      if (!view.meta.noCache) {
+      if (!view.meta.noCache) {//如果需要缓存就添加进储存
         state.cachedViews.push(view.name)
       }
     },
@@ -67,7 +67,7 @@ const state = {
   }
   
   const actions = {
-    addView({ dispatch }, view) {
+    addView({ dispatch }, view) {//添加tagview
       dispatch('addVisitedView', view)
       dispatch('addCachedView', view)
     },

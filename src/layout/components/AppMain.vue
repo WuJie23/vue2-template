@@ -1,4 +1,8 @@
 <template>
+  <!-- 
+    缓存页面内容添加vue提供的transition过渡动画
+    在路由上设置唯一标识:key 属性通过给每个路由组件一个唯一的 key 值，以便在组件切换时，Vue 可以正确地触发过渡效果和保留状态。
+   -->
     <section class="app-main">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">

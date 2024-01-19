@@ -15,7 +15,7 @@ store/modules/permission.js
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some(role => route.meta.roles.includes(role))
-  } else {
+  } else {//没有route.meta && route.meta.roles 说明没有权限要求 都可以访问
     return true
   }
 }
