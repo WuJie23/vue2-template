@@ -50,7 +50,7 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token)
-        .then((response) => {
+        .then((response) => { 
           const { data } = response;
 
           if (!data) {
@@ -143,9 +143,9 @@ const actions = {
   },
 };
 
-export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions,
-};
+  export default {
+    namespaced: true,
+    state,
+    mutations,
+    actions,
+  };

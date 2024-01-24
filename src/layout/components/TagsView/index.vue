@@ -16,6 +16,7 @@
           @click.middle.native="!isAffix(tag)?closeSelectedTag(tag):''"
           @contextmenu.prevent.native="openMenu(tag,$event)"
         >
+        <!-- @contextmenu: 这是 Vue 模板中的右键菜单事件捕获指令。 -->
           {{ tag.title }}
           <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
         </router-link>
@@ -154,7 +155,7 @@
       },
       closeSelectedTag(view) {
         this.$store.dispatch('tagsView/delView', view).then(({ visitedViews }) => {
-          if (this.isActive(view)) {
+          if (this.isActive(view)) {//如果删除的tagview  是当前展示的tagview
             this.toLastView(visitedViews, view)
           }
         })
@@ -188,12 +189,12 @@
           }
         }
       },
-      openMenu(tag, e) {
-        const menuMinWidth = 105
-        const offsetLeft = this.$el.getBoundingClientRect().left // 左侧集装箱边距
-        const offsetWidth = this.$el.offsetWidth // 集装箱宽度
+      openMenu(tag, e) {//右击元素后确定弹出选项框的位置
+        const menuMinWidth = 105 //选项框的最小宽度，设置为 105。
+        const offsetLeft = this.$el.getBoundingClientRect().left //获取元素相对于视口左边缘的水平距离。
+        const offsetWidth = this.$el.offsetWidth // 元素的宽度
         const maxLeft = offsetWidth - menuMinWidth // 左边界
-        const left = e.clientX - offsetLeft + 15 // 15: margin right
+        const left = e.clientX - offsetLeft + 15 // 弹出选项框的左侧位置
   
         if (left > maxLeft) {
           this.left = maxLeft

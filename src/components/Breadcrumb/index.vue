@@ -3,7 +3,8 @@
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
         <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
-        <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+        <a v-else @click.
+        ="handleLink(item)">{{ item.meta.title }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
@@ -20,7 +21,7 @@ export default {
   },
   watch: {
     $route(route) {
-      // if you go to the redirect page, do not update the breadcrumbs
+      //如果转到重定向页面，请不要更新面包屑
       if (route.path.startsWith('/redirect/')) {
         return
       }
@@ -32,11 +33,11 @@ export default {
   },
   methods: {
     getBreadcrumb() {
-      // only show routes with meta.title
+      // 仅显示带有meta.title的路线
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
       const first = matched[0]
 
-      if (!this.isDashboard(first)) {
+      if (!this.isDashboard(first)) {//不是首页就合并
         matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
       }
 

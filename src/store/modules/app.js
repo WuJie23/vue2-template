@@ -40,7 +40,7 @@ const mutations = {
 }
 
 const actions = {
-  toggleSideBar({ commit }) {
+  toggleSideBar({ commit }) {//切换边栏
     commit('TOGGLE_SIDEBAR')
   },
   closeSideBar({ commit }, { withoutAnimation }) {

@@ -54,10 +54,10 @@ const mutations = {
 }
 
 const actions = {
-  // roles  通过用户角色权限获取权限路由
+  // 通过用户角色权限获取权限路由
   generateRoutes({ commit }, roles) {
     return new Promise(resolve => {
-      let accessedRoutes
+      let accessedRoutes //可访问路由
       /*includes 可以判断一个数组中是否包含某一个元素，并返回true 或者false
         ['a','b','c'].includes('a')
         true */
